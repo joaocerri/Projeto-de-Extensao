@@ -23,10 +23,66 @@ typedef struct {
     float precocusto;
     float precovenda;
     float margemlucro;
-    int ativo; // 1 = ativo, 0 = excluÌdo
+    int ativo; // 1 = ativo, 0 = exclu√≠do
 } Produto;
 
-// FunÁıes de Clientes
+// Fun√ß√µes de salvar/carregar clientes
+void salvarClientes(Cliente c[], int totalClientes) {
+    FILE *f = fopen("clientes.txt", "w");
+    if (f == NULL) {
+        printf("Erro ao salvar clientes.\n");
+        return;
+    }
+    for (int i = 0; i < totalClientes; i++) {
+        fprintf(f, "%s|%s|%s|%s|%s\n", c[i].cpf, c[i].c_nome, c[i].tel, c[i].end, c[i].proj);
+    }
+    fclose(f);
+}
+
+void carregarClientes(Cliente c[], int *totalClientes) {
+    FILE *f = fopen("clientes.txt", "r");
+    if (f == NULL) return;
+
+    while (!feof(f)) {
+        Cliente temp;
+        if (fscanf(f, " %[^|]|%[^|]|%[^|]|%[^|]|%[^\n]\n", temp.cpf, temp.c_nome, temp.tel, temp.end, temp.proj) == 5) {
+            c[*totalClientes] = temp;
+            (*totalClientes)++;
+        }
+    }
+    fclose(f);
+}
+
+// Fun√ß√µes de salvar/carregar produtos
+void salvarProdutos(Produto p[], int totalProdutos) {
+    FILE *f = fopen("produtos.txt", "w");
+    if (f == NULL) {
+        printf("Erro ao salvar produtos.\n");
+        return;
+    }
+    for (int i = 0; i < totalProdutos; i++) {
+        fprintf(f, "%d|%s|%s|%f|%f|%f|%d\n", p[i].id, p[i].nome, p[i].fornecedor,
+                p[i].precocusto, p[i].precovenda, p[i].margemlucro, p[i].ativo);
+    }
+    fclose(f);
+}
+
+void carregarProdutos(Produto p[], int *totalProdutos) {
+    FILE *f = fopen("produtos.txt", "r");
+    if (f == NULL) return;
+
+    while (!feof(f)) {
+        Produto temp;
+        if (fscanf(f, "%d|%[^|]|%[^|]|%f|%f|%f|%d\n", &temp.id, temp.nome, temp.fornecedor,
+                   &temp.precocusto, &temp.precovenda, &temp.margemlucro, &temp.ativo) == 7) {
+            p[*totalProdutos] = temp;
+            (*totalProdutos)++;
+        }
+    }
+    fclose(f);
+}
+
+// Fun√ß√µes de Clientes
 void addCliente(Cliente c[], int *n) {
     if (*n >= MAX_CLIENTES) {
         printf("Limite de cadastros de clientes atingido!\n");
@@ -41,7 +97,7 @@ void addCliente(Cliente c[], int *n) {
     scanf(" %[^\n]", novo.c_nome);
     printf("Telefone: ");
     scanf(" %[^\n]", novo.tel);
-    printf("EndereÁo: ");
+    printf("Endere√ßo: ");
     scanf(" %[^\n]", novo.end);
     printf("Projeto: ");
     scanf(" %[^\n]", novo.proj);
@@ -61,13 +117,13 @@ void pesquisarCliente(Cliente c[], int n) {
             printf("CPF: %s\n", c[i].cpf);
             printf("Nome: %s\n", c[i].c_nome);
             printf("Telefone: %s\n", c[i].tel);
-            printf("EndereÁo: %s\n", c[i].end);
+            printf("Endere√ßo: %s\n", c[i].end);
             printf("Projeto: %s\n", c[i].proj);
             return;
         }
     }
 
-    printf("Cliente n„o encontrado.\n");
+    printf("Cliente n√£o encontrado.\n");
 }
 
 void editarCliente(Cliente c[], int n) {
@@ -81,7 +137,7 @@ void editarCliente(Cliente c[], int n) {
             scanf(" %[^\n]", c[i].c_nome);
             printf("Novo telefone: ");
             scanf(" %[^\n]", c[i].tel);
-            printf("Novo endereÁo: ");
+            printf("Novo endere√ßo: ");
             scanf(" %[^\n]", c[i].end);
             printf("Novo projeto: ");
             scanf(" %[^\n]", c[i].proj);
@@ -89,7 +145,7 @@ void editarCliente(Cliente c[], int n) {
             return;
         }
     }
-    printf("Cliente n„o encontrado.\n");
+    printf("Cliente n√£o encontrado.\n");
 }
 
 void excluirCliente(Cliente c[], int *n) {
@@ -103,14 +159,14 @@ void excluirCliente(Cliente c[], int *n) {
                 c[j] = c[j + 1];
             }
             (*n)--;
-            printf("Cliente excluÌdo com sucesso!\n");
+            printf("Cliente exclu√≠do com sucesso!\n");
             return;
         }
     }
-    printf("Cliente n„o encontrado.\n");
+    printf("Cliente n√£o encontrado.\n");
 }
 
-// FunÁıes de Produtos
+// Fun√ß√µes de Produtos
 void cadastrarProduto(Produto produtos[], int *totalProdutos) {
     if (*totalProdutos >= MAX_PRODUTOS) {
         printf("Limite de produtos cadastrados atingido!\n");
@@ -151,7 +207,6 @@ void listarProdutos(Produto produtos[], int totalProdutos) {
     }
 
     printf("\n    Lista de Produtos   \n");
-    int encontrou = 0;
     for (int i = 0; i < totalProdutos; i++) {
         Produto p = produtos[i];
         if (p.ativo) {
@@ -162,70 +217,54 @@ void listarProdutos(Produto produtos[], int totalProdutos) {
             printf("Preco de Venda: R$ %.2f\n", p.precovenda);
             printf("Margem de Lucro: %.2f%%\n", p.margemlucro);
             printf("----------------------------\n");
-            encontrou = 1;
         }
-    }
-    if (!encontrou) {
-        printf("Nenhum produto ativo cadastrado.\n");
     }
 }
 
 void excluirProduto(Produto produtos[], int totalProdutos) {
-    if (totalProdutos == 0) {
-        printf("Nenhum produto cadastrado para excluir.\n");
-        return;
-    }
-
     int idExcluir;
     printf("Digite o ID do produto que deseja excluir: ");
     scanf("%d", &idExcluir);
 
-    int encontrado = 0;
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].id == idExcluir && produtos[i].ativo) {
             produtos[i].ativo = 0;
-            printf("Produto ID %d excluÌdo com sucesso.\n", idExcluir);
-            encontrado = 1;
-            break;
+            printf("Produto ID %d exclu√≠do com sucesso.\n", idExcluir);
+            return;
         }
     }
-    if (!encontrado) {
-        printf("Produto com ID %d n„o encontrado ou j· excluÌdo.\n", idExcluir);
-    }
+    printf("Produto com ID %d n√£o encontrado ou j√° exclu√≠do.\n", idExcluir);
 }
 
 int main() {
     setlocale(LC_ALL, "Portuguese");
-    system("chcp 1252 > null"); // Para acentuaÁ„o no Windows
+    system("chcp 1252 > null");
 
-    // Dados de login
     char usuario_adm[] = "admin";
     char senha_adm[] = "admin";
-    char usuario[20];
-    char senha[20];
+    char usuario[20], senha[20];
 
-    // Dados dos cadastros
     Cliente clientes[MAX_CLIENTES];
     int totalClientes = 0;
+    carregarClientes(clientes, &totalClientes);
 
     Produto produtos[MAX_PRODUTOS];
     int totalProdutos = 0;
+    carregarProdutos(produtos, &totalProdutos);
 
-    // === LOGIN ===
     printf("=== Sistema de Login ===\n");
-    printf("Usu·rio: ");
+    printf("Usu√°rio: ");
     scanf("%s", usuario);
     printf("Senha: ");
     scanf("%s", senha);
 
     if (strcmp(usuario, usuario_adm) != 0 || strcmp(senha, senha_adm) != 0) {
-        printf("Usu·rio ou senha incorretos. Encerrando o programa.\n");
+        printf("Usu√°rio ou senha incorretos. Encerrando o programa.\n");
         return 0;
     }
 
-    printf("\nLogin concluÌdo! Bem-vindo ao sistema ZenCODE, %s.\n", usuario);
+    printf("\nLogin conclu√≠do! Bem-vindo ao sistema ZenCODE, %s.\n", usuario);
 
-    // MENU
     int opcao;
 
     do {
@@ -233,7 +272,7 @@ int main() {
         printf("1. Gerenciar Clientes\n");
         printf("2. Gerenciar Produtos\n");
         printf("0. Sair\n");
-        printf("Escolha uma opÁ„o: ");
+        printf("Escolha uma op√ß√£o: ");
         scanf("%d", &opcao);
 
         switch (opcao) {
@@ -246,7 +285,7 @@ int main() {
                     printf("3. Editar Cliente\n");
                     printf("4. Excluir Cliente\n");
                     printf("0. Voltar\n");
-                    printf("Escolha uma opÁ„o: ");
+                    printf("Escolha uma op√ß√£o: ");
                     scanf("%d", &opCliente);
 
                     switch (opCliente) {
@@ -254,8 +293,8 @@ int main() {
                         case 2: pesquisarCliente(clientes, totalClientes); break;
                         case 3: editarCliente(clientes, totalClientes); break;
                         case 4: excluirCliente(clientes, &totalClientes); break;
-                        case 0: printf("Voltando...\n"); break;
-                        default: printf("OpÁ„o inv·lida.\n");
+                        case 0: break;
+                        default: printf("Op√ß√£o inv√°lida.\n");
                     }
                 } while (opCliente != 0);
                 break;
@@ -269,15 +308,15 @@ int main() {
                     printf("2. Listar Produtos\n");
                     printf("3. Excluir Produto\n");
                     printf("0. Voltar\n");
-                    printf("Escolha uma opÁ„o: ");
+                    printf("Escolha uma op√ß√£o: ");
                     scanf("%d", &opProduto);
 
                     switch (opProduto) {
                         case 1: cadastrarProduto(produtos, &totalProdutos); break;
                         case 2: listarProdutos(produtos, totalProdutos); break;
                         case 3: excluirProduto(produtos, totalProdutos); break;
-                        case 0: printf("Voltando...\n"); break;
-                        default: printf("OpÁ„o inv·lida.\n");
+                        case 0: break;
+                        default: printf("Op√ß√£o inv√°lida.\n");
                     }
                 } while (opProduto != 0);
                 break;
@@ -288,9 +327,13 @@ int main() {
                 break;
 
             default:
-                printf("OpÁ„o inv·lida. Tente novamente.\n");
+                printf("Op√ß√£o inv√°lida. Tente novamente.\n");
         }
+
     } while (opcao != 0);
 
-††††return†0;
+    salvarClientes(clientes, totalClientes);
+    salvarProdutos(produtos, totalProdutos);
+
+    return 0;
 }
