@@ -237,12 +237,13 @@ void excluirProduto(Produto produtos[], int totalProdutos) {
 }
 
 int main() {
-    setlocale(LC_ALL, "Portuguese");
-    system("chcp 1252 > null");
-
     char usuario_adm[] = "admin";
     char senha_adm[] = "admin";
     char usuario[20], senha[20];
+
+    
+    setlocale(LC_ALL, "Portuguese");
+    system("chcp 1252 > null");
 
     Cliente clientes[MAX_CLIENTES];
     int totalClientes = 0;
