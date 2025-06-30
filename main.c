@@ -123,17 +123,6 @@ int main() {
     int totalOrcamentos = 0;
     carregarOrcamentos(orcamentos, &totalOrcamentos);
 
-
-    //printf("=== Sistema de Login ===\nUsuário: ");
-    //scanf("%s", usuario);
-    ///printf("Senha: ");
-   // scanf("%s", senha);
-
-    //if (strcmp(usuario, usuario_adm) != 0 || strcmp(senha, senha_adm) != 0) {
-    //        printf("Usuário ou senha incorretos.\n");
-    //return 0;
-    //}
-
     printf("\nLogin concluído! Bem-vindo ao sistema ZenCODE, %s.\n", "ADMIN");
 
     int opcao;
