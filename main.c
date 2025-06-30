@@ -40,6 +40,8 @@ typedef struct {
     float total;
     int id_produto;
 } Orcamento;
+void lerCampo(char *campo, char *nomeCampo);
+
 
 void cls() {
     system("cls");
@@ -359,7 +361,6 @@ void cadastrarCliente(Cliente c[], int *n) {
             return;
         }
     }
-
     lerCampo(novo.c_nome, "Nome");
 
     printf("Telefone: ");
