@@ -31,7 +31,7 @@ typedef struct {
 
 
 
-// Extens√£o da struct Orcamento
+// Extens„o da struct Orcamento
 typedef struct {
     int id;
     Cliente cliente;
@@ -123,12 +123,12 @@ int main() {
     int totalOrcamentos = 0;
     carregarOrcamentos(orcamentos, &totalOrcamentos);
 
-    printf("\nLogin conclu√≠do! Bem-vindo ao sistema ZenCODE, %s.\n", "ADMIN");
+    printf("\nLogin concluÌdo! Bem-vindo ao sistema ZenCODE, %s.\n", "ADMIN");
 
     int opcao;
     do {
 
-        printf("\n--- Menu Principal ---\n1. Gerenciar Clientes\n2. Gerenciar Produtos\n3. Gerenciar Or√ßamentos\n0. Sair\nEscolha uma op√ß√£o: ");
+        printf("\n--- Menu Principal ---\n1. Gerenciar Clientes\n2. Gerenciar Produtos\n3. Gerenciar OrÁamentos\n0. Sair\nEscolha uma opÁ„o: ");
         scanf("%d", &opcao);
         system("cls");
         switch (opcao) {
@@ -136,7 +136,7 @@ int main() {
                 int opCliente;
                 do {
 
-                    printf("\n--- Menu Clientes ---\n1. Adicionar Cliente\n2. Pesquisar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\nEscolha uma op√ß√£o: ");
+                    printf("\n--- Menu Clientes ---\n1. Adicionar Cliente\n2. Pesquisar Cliente\n3. Editar Cliente\n4. Excluir Cliente\n0. Voltar\nEscolha uma opÁ„o: ");
                     scanf("%d", &opCliente);
 
                     switch (opCliente) {
@@ -153,7 +153,7 @@ int main() {
                 int opProduto;
                 do {
 
-                    printf("\n--- Menu Produtos ---\n1. Cadastrar Produto\n2. Listar Produtos\n3. Editar Produto\n4. Excluir Produto\n0. Voltar\nEscolha uma op√ß√£o: ");
+                    printf("\n--- Menu Produtos ---\n1. Cadastrar Produto\n2. Listar Produtos\n3. Editar Produto\n4. Excluir Produto\n0. Voltar\nEscolha uma opÁ„o: ");
                     scanf("%d", &opProduto);
                     switch (opProduto) {
                         case 1: cadastrarProduto(produtos, &totalProdutos); break;
@@ -169,7 +169,7 @@ int main() {
                 int opOrcamento;
                 do {
 
-                    printf("\n--- Menu Or√ßamento ---\n1. Cadastrar Or√ßamento\n2. Pesquisar Or√ßamento\n3. Editar Or√ßamento\n4. Excluir Or√ßamento\n0. Voltar\nEscolha uma op√ß√£o: ");
+                    printf("\n--- Menu OrÁamento ---\n1. Cadastrar OrÁamento\n2. Pesquisar OrÁamento\n3. Editar OrÁamento\n4. Excluir OrÁamento\n0. Voltar\nEscolha uma opÁ„o: ");
                     scanf("%d", &opOrcamento);
                     switch (opOrcamento) {
                         case 1: criarOrcamento(orcamentos, &totalOrcamentos, clientes, totalClientes, produtos, totalProdutos); break;
@@ -181,7 +181,7 @@ int main() {
                 } while (opOrcamento != 0);
                 break;
             default:
-                printf("\n Op√ß√£o inv√°lida!!");
+                printf("\n OpÁ„o inv·lida!!");
                 break;
             }
             case 0:
@@ -213,7 +213,7 @@ void lerNomeProduto(char *str) {
         if(strlen(str) > 48)
         {
             erro = 1;
-            printf("\nERRO: O nome pode possuir no m√°ximo 48 caracteres!\n");
+            printf("\nERRO: O nome pode possuir no m·ximo 48 caracteres!\n");
         }
         if(strlen(str) < 5) {
             erro = 1;
@@ -229,18 +229,18 @@ void lerEndereco(char *str) {
     {
         erro = 0;
 
-        printf("\nEndere√ßo: ");
+        printf("\nEndereÁo: ");
         scanf(" %99[^\n]", str);
         fflush(stdin);
 
         if(strlen(str) > 98)
         {
             erro = 1;
-            printf("\nERRO: O endere√ßo pode possuir no m√°ximo 99 caracteres!\n");
+            printf("\nERRO: O endereÁo pode possuir no m·ximo 99 caracteres!\n");
         }
         if(strlen(str) < 5) {
             erro = 1;
-            printf("\nERRO: O endere√ßo deve possuir pelo menos 5 caracteres!\n");
+            printf("\nERRO: O endereÁo deve possuir pelo menos 5 caracteres!\n");
         }
 
     } while(erro == 1);
@@ -259,7 +259,7 @@ void lerTelefone(char *str) {
         if(strlen(str) > 9)
         {
             erro = 1;
-            printf("\nERRO: O telefone pode possuir no m√°ximo 9 caracteres!\n");
+            printf("\nERRO: O telefone pode possuir no m·ximo 9 caracteres!\n");
         }
         if(strlen(str) < 8) {
             erro = 1;
@@ -274,14 +274,14 @@ float lerCusto() {
     do
     {
         erro = 0;
-        printf("Pre√ßo de Custo: R$ ");
+        printf("PreÁo de Custo: R$ ");
         erro = scanf("%f", &custo);
         fflush(stdin);
 
         if(custo < 1 || erro != 1)
         {
             erro = -1;
-            printf("\nERRO: o pre√ßo de custo deve ser maior do que 0!\n");
+            printf("\nERRO: o preÁo de custo deve ser maior do que 0!\n");
         }
 
     }while(erro != 1);
@@ -314,19 +314,19 @@ float lerPrecoVenda(float custo) {
     do
     {
         erro = 0;
-        printf("Pre√ßo de venda: R$ ");
+        printf("PreÁo de venda: R$ ");
         erro = scanf("%f", &precoVenda);
         fflush(stdin);
 
         if(precoVenda < 1 || erro != 1)
         {
             erro = -1;
-            printf("\nERRO: o pre√ßo de venda deve ser maior do que 0!\n");
+            printf("\nERRO: o preÁo de venda deve ser maior do que 0!\n");
         }
         if(precoVenda <= custo || erro != 1)
         {
             erro = -1;
-            printf("\nERRO: o pre√ßo de venda deve ser maior do que pre√ßo de custo!\n");
+            printf("\nERRO: o preÁo de venda deve ser maior do que preÁo de custo!\n");
         }
     }while(erro != 1);
 
@@ -347,7 +347,7 @@ void lerCampo(char *campo, char *nomeCampo) {
         if(strlen(campo) > 48)
         {
             erro = 1;
-            printf("\nERRO: O campo \'%s\' pode possuir no m√°ximo 48 caracteres!\n", nomeCampo);
+            printf("\nERRO: O campo \'%s\' pode possuir no m·ximo 48 caracteres!\n", nomeCampo);
         }
         if(strlen(campo) < 5) {
             erro = 1;
@@ -426,10 +426,10 @@ void carregarOrcamentos(Orcamento o[], int *totalOrcamentos) {
         if (fscanf(f, "%d|%12[^|]|%d|%d\n",
                    &temp.id, cpf,
                    &temp.qtd, &temp.id_produto) == 4) {
-            // Apenas armazenamos CPF e nome do produto para refer√™ncia;
+            // Apenas armazenamos CPF e nome do produto para referÍncia;
             // se quiser linkar objetos completos, procure nos arrays
             strcpy(temp.cliente.cpf, cpf);
-            // n√£o precisa mais porque agora o nome do produto aparece dinamicamente
+            // n„o precisa mais porque agora o nome do produto aparece dinamicamente
             //strcpy(temp.produto.nome, nomeProd);
             o[*totalOrcamentos] = temp;
             (*totalOrcamentos)++;
@@ -440,13 +440,13 @@ void carregarOrcamentos(Orcamento o[], int *totalOrcamentos) {
 
 void criarOrcamento(Orcamento orcamentos[], int *totalOrcamentos, Cliente clientes[], int totalClientes, Produto produtos[], int totalProdutos) {
     cls();
-    printf("1 - Criar Or√ßamento\n");
+    printf("1 - Criar OrÁamento\n");
     if (totalClientes == 0 || totalProdutos == 0) {
-        printf("Necess√°rio ter pelo menos um cliente e um produto cadastrados.\n");
+        printf("Necess·rio ter pelo menos um cliente e um produto cadastrados.\n");
         return;
     }
     if (*totalOrcamentos >= MAX_ORCAMENTOS) {
-        printf("\nERRO: Os or√ßamentos atingiram sua capacidade m√°xima!\n");
+        printf("\nERRO: Os orÁamentos atingiram sua capacidade m·xima!\n");
         return;
     }
     char cpf[13];
@@ -456,7 +456,7 @@ void criarOrcamento(Orcamento orcamentos[], int *totalOrcamentos, Cliente client
     int ci = -1;
     for (int i = 0; i < totalClientes; i++)
         if (strcmp(clientes[i].cpf, cpf) == 0) { ci = i; break; }
-    if (ci < 0) { printf("Cliente n√£o encontrado.\n"); return; }
+    if (ci < 0) { printf("Cliente n„o encontrado.\n"); return; }
 
     int idP;
     idP = lerQuantidade("ID do produto");
@@ -464,17 +464,17 @@ void criarOrcamento(Orcamento orcamentos[], int *totalOrcamentos, Cliente client
     int pi = -1;
     for (int i = 0; i < totalProdutos; i++)
         if (produtos[i].id == idP && produtos[i].ativo) { pi = i; break; }
-    if (pi < 0) { printf("Produto n√£o encontrado ou inativo.\n"); return; }
+    if (pi < 0) { printf("Produto n„o encontrado ou inativo.\n"); return; }
 
     int qtd;
     qtd = lerQuantidade("Quantidade desejada");
 
     if (qtd > produtos[pi].quantidade) {
-        printf("Estoque insuficiente. Dispon√≠vel: %d.\n", produtos[pi].quantidade);
+        printf("Estoque insuficiente. DisponÌvel: %d.\n", produtos[pi].quantidade);
         return;
     }
 
-    // Monta o or√ßamento
+    // Monta o orÁamento
     Orcamento o;
     o.id         = (*totalOrcamentos) + 1;
     o.cliente    = clientes[ci];
@@ -495,10 +495,10 @@ void criarOrcamento(Orcamento orcamentos[], int *totalOrcamentos, Cliente client
     orcamentos[*totalOrcamentos] = o;
     (*totalOrcamentos)++;
 
-    printf("\n----- OR√áAMENTO #%d -----\n", o.id);
+    printf("\n----- OR«AMENTO #%d -----\n", o.id);
     printf("Cliente:        %s\n", o.cliente.c_nome);
     printf("Produto:        %s\n", o.produto.nome);
-    printf("Valor unit√°rio: R$ %.2f\n", o.produto.precovenda);
+    printf("Valor unit·rio: R$ %.2f\n", o.produto.precovenda);
     printf("Quantidade:     %d\n", o.qtd);
     printf("Total:          R$ %.2f\n", o.total);
     printf("--------------------------\n");
@@ -507,7 +507,7 @@ void criarOrcamento(Orcamento orcamentos[], int *totalOrcamentos, Cliente client
 void pesquisarOrcamento(Orcamento o[], int totalOrcamentos, Cliente clientes[], int totalClientes, Produto produtos[], int totalProdutos) {
     cls();
     char cpf[13];
-    printf("2 - Pesquisar Or√ßamento\n");
+    printf("2 - Pesquisar OrÁamento\n");
     printf("CPF do cliente para pesquisar: ");
 
     lerCpf(cpf);
@@ -522,7 +522,7 @@ void pesquisarOrcamento(Orcamento o[], int totalOrcamentos, Cliente clientes[], 
             float precoVenda = getValorProduto(produtos, totalProdutos, o[i].id_produto);
             o[i].total = calcularValorOrcamento(precoVenda, o[i].qtd);
 
-            printf("\n----- OR√áAMENTO #%d -----\n", o[i].id);
+            printf("\n----- OR«AMENTO #%d -----\n", o[i].id);
             printf("Cliente:    %s\n", o[i].cliente.c_nome);
             printf("Produto:    %s\n", o[i].produto.nome);
             printf("Quantidade: %d\n", o[i].qtd);
@@ -531,14 +531,14 @@ void pesquisarOrcamento(Orcamento o[], int totalOrcamentos, Cliente clientes[], 
             return;
         }
     }
-    printf("Or√ßamento n√£o encontrado para o CPF %s.\n", cpf);
+    printf("OrÁamento n„o encontrado para o CPF %s.\n", cpf);
 }
 
 void editarOrcamento(Orcamento o[], int totalOrcamentos,  Cliente clientes[], int totalClientes, Produto produtos[], int totalProdutos) {
     cls();
     int id;
-    printf("3 - Editar Or√ßamento\n");
-    id = lerQuantidade("ID do or√ßamento a editar");
+    printf("3 - Editar OrÁamento\n");
+    id = lerQuantidade("ID do orÁamento a editar");
 
     for (int i = 0; i < totalOrcamentos; i++) {
         if (o[i].id == id) {
@@ -553,30 +553,30 @@ void editarOrcamento(Orcamento o[], int totalOrcamentos,  Cliente clientes[], in
                     // Devolve a quantidade antiga
                     produtos[j].quantidade += o[i].qtd;
 
-                    // Verifica se h√° estoque suficiente para a nova quantidade
+                    // Verifica se h· estoque suficiente para a nova quantidade
                     if (novaQtd > produtos[j].quantidade) {
-                        printf("Estoque insuficiente. Quantidade dispon√≠vel: %d\n", produtos[j].quantidade);
-                        // Reverte o estoque √† quantidade anterior
+                        printf("Estoque insuficiente. Quantidade disponÌvel: %d\n", produtos[j].quantidade);
+                        // Reverte o estoque ‡ quantidade anterior
                         produtos[j].quantidade -= o[i].qtd;
                         return;
                     }
 
-                    // Atualiza estoque e or√ßamento
+                    // Atualiza estoque e orÁamento
                     produtos[j].quantidade -= novaQtd;
                     o[i].qtd = novaQtd;
                     o[i].total = calcularValorOrcamento(produtos[j].precovenda, novaQtd);
-                    o[i].produto = produtos[j]; // Atualiza informa√ß√µes do produto no or√ßamento
+                    o[i].produto = produtos[j]; // Atualiza informaÁıes do produto no orÁamento
 
                     //pega o nome atualizado do cliente
                     strcpy(o[i].cliente.c_nome, getNomeCliente(clientes, totalClientes, o[i].cliente.cpf));
                     //pega o nome atualizado do produto
                     strcpy(o[i].produto.nome, getNomeProduto(produtos, totalProdutos, o[i].id_produto));
 
-                    printf("Or√ßamento atualizado com sucesso:\n");
-                    printf("\n----- OR√áAMENTO #%d -----\n", o[i].id);
+                    printf("OrÁamento atualizado com sucesso:\n");
+                    printf("\n----- OR«AMENTO #%d -----\n", o[i].id);
                     printf("Cliente:        %s\n", o[i].cliente.c_nome);
                     printf("Produto:        %s\n", o[i].produto.nome);
-                    printf("Valor unit√°rio: R$ %.2f\n", o[i].produto.precovenda);
+                    printf("Valor unit·rio: R$ %.2f\n", o[i].produto.precovenda);
                     printf("Quantidade:     %d\n", o[i].qtd);
                     printf("Total:          R$ %.2f\n", o[i].total);
                     printf("--------------------------\n");
@@ -584,19 +584,19 @@ void editarOrcamento(Orcamento o[], int totalOrcamentos,  Cliente clientes[], in
                 }
             }
 
-            printf("Produto vinculado ao or√ßamento n√£o encontrado.\n");
+            printf("Produto vinculado ao orÁamento n„o encontrado.\n");
             return;
         }
     }
 
-    printf("Or√ßamento com ID %d n√£o encontrado.\n", id);
+    printf("OrÁamento com ID %d n„o encontrado.\n", id);
 }
 
 void excluirOrcamento(Orcamento o[], int *total, Produto produtos[], int totalProdutos) {
     cls();
     int id;
-    printf("4 - Excluir Or√ßamento\n");
-    id = lerQuantidade("ID do or√ßamento a excluir:");
+    printf("4 - Excluir OrÁamento\n");
+    id = lerQuantidade("ID do orÁamento a excluir:");
 
     for (int i = 0; i < *total; i++) {
         if (o[i].id == id) {
@@ -608,16 +608,16 @@ void excluirOrcamento(Orcamento o[], int *total, Produto produtos[], int totalPr
                 }
             }
 
-            // Remove or√ßamento do array
+            // Remove orÁamento do array
             for (int j = i; j < *total - 1; j++) {
                 o[j] = o[j + 1];
             }
             (*total)--;
-            printf("Or√ßamento exclu√≠do e produto devolvido ao estoque.\n");
+            printf("OrÁamento excluÌdo e produto devolvido ao estoque.\n");
             return;
         }
     }
-    printf("Or√ßamento com ID %d n√£o encontrado.\n", id);
+    printf("OrÁamento com ID %d n„o encontrado.\n", id);
 }
 
 void salvarClientes(Cliente c[], int totalClientes) {
@@ -670,17 +670,17 @@ void cadastrarCliente(Cliente c[], int *n) {
     cls();
     printf("1 - Adicionar Cliente\n");
     if (*n >= MAX_CLIENTES) {
-        printf("\nERRO: Os cadastros atingiram sua capacidade m√°xima!\n");
+        printf("\nERRO: Os cadastros atingiram sua capacidade m·xima!\n");
         return;
     }
     Cliente novo;
     printf("CPF: ");
     lerCpf(novo.cpf);
 
-    // Verifica se j√° existe um cliente com o mesmo CPF
+    // Verifica se j· existe um cliente com o mesmo CPF
     for (int i = 0; i < *n; i++) {
         if (strcmp(c[i].cpf, novo.cpf) == 0) {
-            printf("ERRO: J√° existe um cliente com este CPF.\n");
+            printf("ERRO: J· existe um cliente com este CPF.\n");
             return;
         }
     }
@@ -700,7 +700,7 @@ void cadastrarCliente(Cliente c[], int *n) {
     printf("CPF:      %s\n", novo.cpf);
     printf("Nome:     %s\n", novo.c_nome);
     printf("Telefone: %s\n", novo.tel);
-    printf("Endere√ßo: %s\n", novo.end);
+    printf("EndereÁo: %s\n", novo.end);
     printf("Projeto:  %s\n", novo.proj);
     printf("--------------------------\n");
 }
@@ -719,13 +719,13 @@ void pesquisarCliente(Cliente c[], int n) {
             printf("CPF:      %s\n", c[i].cpf);
             printf("Nome:     %s\n", c[i].c_nome);
             printf("Telefone: %s\n", c[i].tel);
-            printf("Endere√ßo: %s\n", c[i].end);
+            printf("EndereÁo: %s\n", c[i].end);
             printf("Projeto:  %s\n", c[i].proj);
             printf("--------------------------\n");
             return;
         }
     }
-    printf("Cliente n√£o encontrado.\n");
+    printf("Cliente n„o encontrado.\n");
 }
 
 void editarCliente(Cliente c[], int n) {
@@ -738,12 +738,12 @@ void editarCliente(Cliente c[], int n) {
     lerCpf(cpf);
     for (int i = 0; i < n; i++) {
         if (strcmp(c[i].cpf, cpf) == 0) {
-            printf("\nCliente Encontrado para edi√ß√£o: \n");
+            printf("\nCliente Encontrado para ediÁ„o: \n");
             printf("\n--------------------------\n");
             printf("CPF:      %s\n", c[i].cpf);
             printf("Nome:     %s\n", c[i].c_nome);
             printf("Telefone: %s\n", c[i].tel);
-            printf("Endere√ßo: %s\n", c[i].end);
+            printf("EndereÁo: %s\n", c[i].end);
             printf("Projeto:  %s\n", c[i].proj);
             printf("--------------------------\n");
 
@@ -760,14 +760,14 @@ void editarCliente(Cliente c[], int n) {
             printf("CPF:      %s\n", c[i].cpf);
             printf("Nome:     %s\n", c[i].c_nome);
             printf("Telefone: %s\n", c[i].tel);
-            printf("Endere√ßo: %s\n", c[i].end);
+            printf("EndereÁo: %s\n", c[i].end);
             printf("Projeto:  %s\n", c[i].proj);
             printf("--------------------------\n");
 
             return;
         }
     }
-    printf("Cliente n√£o encontrado.\n");
+    printf("Cliente n„o encontrado.\n");
 }
 
 void excluirCliente(Cliente c[], int *n, Orcamento o[], int totalOrcamentos) {
@@ -781,23 +781,23 @@ void excluirCliente(Cliente c[], int *n, Orcamento o[], int totalOrcamentos) {
 
      for (int i = 0; i < totalOrcamentos; i++) {
         if (strcmp(o[i].cliente.cpf, cpf) == 0) {
-            printf("\nERRO: Cliente possui or√ßamentos vinculados e n√£o pode ser exclu√≠do.\n");
+            printf("\nERRO: Cliente possui orÁamentos vinculados e n„o pode ser excluÌdo.\n");
             return;
         }
     }
 
     for (int i = 0; i < *n; i++) {
         if (strcmp(c[i].cpf, cpf) == 0) {
-            // Move os clientes seguintes para "fechar" o espa√ßo do exclu√≠do
+            // Move os clientes seguintes para "fechar" o espaÁo do excluÌdo
             for (int j = i; j < *n - 1; j++) {
                 c[j] = c[j + 1];
             }
             (*n)--;
-            printf("Cliente exclu√≠do com sucesso!\n");
+            printf("Cliente excluÌdo com sucesso!\n");
             return;
         }
     }
-    printf("Cliente n√£o encontrado.\n");
+    printf("Cliente n„o encontrado.\n");
 }
 
 void cadastrarProduto(Produto produtos[], int *totalProdutos) {
@@ -805,7 +805,7 @@ void cadastrarProduto(Produto produtos[], int *totalProdutos) {
     printf("1 - Cadastrar Produto\n");
 
     if (*totalProdutos >= MAX_PRODUTOS) {
-        printf("\nERRO: Os produtos atingiram sua capacidade m√°xima!\n");
+        printf("\nERRO: Os produtos atingiram sua capacidade m·xima!\n");
         return;
     }
     Produto p;
@@ -834,7 +834,7 @@ void cadastrarProduto(Produto produtos[], int *totalProdutos) {
     printf("Venda:       R$ %.2f\n", p.precovenda);
     printf("Lucro:       %.2f%%\n", p.margemlucro);
     printf("Quantidade:  %d\n", p.quantidade);
-    printf("Localiza√ß√£o: %s\n", p.localizacao);
+    printf("LocalizaÁ„o: %s\n", p.localizacao);
     printf("--------------------------\n");
 }
 
@@ -856,7 +856,7 @@ void listarProdutos(Produto produtos[], int totalProdutos) {
             printf("Venda:       R$ %.2f\n", p.precovenda);
             printf("Lucro:       %.2f%%\n", p.margemlucro);
             printf("Quantidade:  %d\n", p.quantidade);
-            printf("Localiza√ß√£o: %s\n", p.localizacao);
+            printf("LocalizaÁ„o: %s\n", p.localizacao);
             printf("--------------------------\n");
         }
     }
@@ -870,7 +870,7 @@ void editarProduto(Produto produtos[], int totalProdutos) {
 
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].id == id && produtos[i].ativo) {
-            printf("\nProduto pronto para edi√ß√£o: ");
+            printf("\nProduto pronto para ediÁ„o: ");
             printf("\n------- Produto #%d -------\n", produtos[i].id);
             printf("Produto:     %s\n", produtos[i].nome);
             printf("Fornecedor:  %s\n", produtos[i].fornecedor);
@@ -878,7 +878,7 @@ void editarProduto(Produto produtos[], int totalProdutos) {
             printf("Venda:       R$ %.2f\n", produtos[i].precovenda);
             printf("Lucro:       %.2f%%\n",produtos[i].margemlucro);
             printf("Quantidade:  %d\n", produtos[i].quantidade);
-            printf("Localiza√ß√£o: %s\n", produtos[i].localizacao);
+            printf("LocalizaÁ„o: %s\n", produtos[i].localizacao);
             printf("--------------------------\n");
 
 
@@ -900,12 +900,12 @@ void editarProduto(Produto produtos[], int totalProdutos) {
             printf("Venda:       R$ %.2f\n", produtos[i].precovenda);
             printf("Lucro:       %.2f%%\n",produtos[i].margemlucro);
             printf("Quantidade:  %d\n", produtos[i].quantidade);
-            printf("Localiza√ß√£o: %s\n", produtos[i].localizacao);
+            printf("LocalizaÁ„o: %s\n", produtos[i].localizacao);
             printf("--------------------------\n");
             return;
         }
     }
-    printf("Produto com ID %d n√£o encontrado ou inativo.\n", id);
+    printf("Produto com ID %d n„o encontrado ou inativo.\n", id);
 }
 void excluirProduto(Produto produtos[], int totalProdutos, Orcamento o[], int totalOrcamentos) {
     int idExcluir;
@@ -914,19 +914,19 @@ void excluirProduto(Produto produtos[], int totalProdutos, Orcamento o[], int to
     printf("3 - Excluir Produto\n");
     idExcluir = lerQuantidade("ID do produto que deseja excluir");
 
-    // Verifica se o produto est√° vinculado a algum or√ßamento
+    // Verifica se o produto est· vinculado a algum orÁamento
     for (int i = 0; i < totalOrcamentos; i++) {
         if (o[i].id_produto == idExcluir) {
-            printf("\nERRO: Produto est√° vinculado a um ou mais or√ßamentos e n√£o pode ser exclu√≠do.\n");
+            printf("\nERRO: Produto est· vinculado a um ou mais orÁamentos e n„o pode ser excluÌdo.\n");
             return;
         }
     }
     for (int i = 0; i < totalProdutos; i++) {
         if (produtos[i].id == idExcluir && produtos[i].ativo) {
             produtos[i].ativo = 0;
-            printf("Produto ID %d exclu√≠do com sucesso.\n", idExcluir);
+            printf("Produto ID %d excluÌdo com sucesso.\n", idExcluir);
             return;
         }
     }
-    printf("Produto com ID %d n√£o encontrado ou j√° exclu√≠do.\n",¬†idExcluir);
+    printf("Produto com ID %d n„o encontrado ou j· excluÌdo.\n", idExcluir);
 }
