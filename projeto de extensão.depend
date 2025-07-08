@@ -1,0 +1,7 @@
+# depslib dependency file v1.0
+1751992606 source:c:\users\dkz\documents\projeto-de-extensao\main.c
+	<stdio.h>
+	<string.h>
+	<locale.h>
+	<stdlib.h>
+
